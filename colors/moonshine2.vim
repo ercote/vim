@@ -16,7 +16,7 @@ let s:line = "#1b065e"
 let s:window = "#1b065e"
 let s:todo = s:comment
 let s:underlined = s:foreground
-let s:status_line = s:string
+let s:status_line = s:background " status bar
 let s:cursor_line = s:operators
 let s:type = s:constant
 let s:keyword = s:constant
@@ -188,7 +188,6 @@ exe "hi! Todo"           .s:fmt_bold   .s:fg_magenta.s:bg_none
 if (has("gui_running")) || &t_Co > 8
   exe "hi! StatusLine"     .s:fmt_none   .s:fg_base2 .s:bg_base1
   exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base2 .s:bg_base00
-  "exe "hi! Visual"         .s:fmt_stnd   .s:fg_none   .s:bg_base2
   exe "hi! Visual"         .s:fmt_none   .s:fg_base03 .s:bg_base01
 else
   exe "hi! StatusLine"     .s:fmt_none   .s:fg_base2 .s:bg_base2
