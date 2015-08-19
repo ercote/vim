@@ -8,11 +8,10 @@ let s:background = "#171738"
 let s:foreground = "#96acb7"
 let s:string = "#cf9893"
 let s:comment = "#2f4b54"
+
 let s:definition = "#8681c6"
 let s:constant = s:definition 
-
 let s:vars = "#09bc8a"
-
 let s:selection = "#1b065e"
 let s:operators = "#cdc6a5"
 let s:line = "#1b065e"
