@@ -5,6 +5,8 @@
 "
 " Default GUI Colours
 
+let g:colors_name = "moonshine"
+set background=light
 
 let s:background = "3a5683"
 let s:foreground = "f2e9e4"
@@ -18,11 +20,8 @@ let s:operators = "cdc6a5"
 let s:line = "1b065e"
 let s:window = "1b065e"
 
-set background=light
 hi clear
 syntax reset
-
-let g:colors_name = "moonshine"
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
   " Returns an approximate grey index for the given grey level

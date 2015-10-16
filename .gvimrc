@@ -1,6 +1,4 @@
-"colorscheme moonshine
-set background=light
-colorscheme solarized
+colorscheme Tomorrow
 
 set guifont=Fira\ Mono:h11
 set linespace=8

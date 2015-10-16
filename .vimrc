@@ -5,13 +5,19 @@ syntax on
 filetype plugin indent on
 
 nohlsearch
-
 set nowrap
-set tabstop=2
+set tabstop=2 " Number of visual spaces for tab
+set softtabstop=2 " number of spaces in tab when editing
 set shiftwidth=2
-set expandtab
+set expandtab " Tabs are spaces
 " no swap files
 set noswapfile
+set showcmd
+set cursorline
+set wildmenu
+set showmatch " show matching brackets
+" Show line numbers
+set number
 
 if !has('gui_running')
   let g:solarized_termtrans=1
@@ -29,14 +35,18 @@ map <C-l> <C-W>l
 "Faster shortcut for commenting. Requires T-Comment plugin
 map <leader>c <c-_><c-_>
 
-set showmatch " show matching brackets
 
-" Hide line numbers
-:set nonumber
+" CtrlP settings
 
+" clear cache :CtrlPClearAllCaches
 " CtrlP ignore these files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gz,*.exe,*.jpg,*.png,*.gif,*.ttf,*.otf
-set wildignore+=*.js.html,*/node_modules/*,*/public/assets/* " Rails/Compiled assets/JS Coverage/Karma/etc.
+set wildignore+=*.js.html,*/node_modules/*,*/public/assets/*,*/js_coverage/*
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+"let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
 
 " Vim airline
 let g:airline#extensions#tabline#enabled = 1
@@ -44,16 +54,13 @@ let g:airline#extensions#tabline#enabled = 1
 " Just show the filename (no path) in the tab
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-
-set laststatus=2
+set laststatus=2 "display the status line always
 
 nmap <C-Tab> :bnext<CR>
 nmap <S-C-Tab> :bprevious<CR>
 nmap <BS> :bprevious<CR>
 nnoremap <Tab> :bnext<CR>
 
-
 let g:vimroom_width=120
 let g:vimroom_min_sidebar_width=5
+
