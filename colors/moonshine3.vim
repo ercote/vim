@@ -4,9 +4,11 @@ let colors_name = "moonshine3"
 " Colors used
 let s:vmode = "gui"
 
-let s:background = "#171738"
+" let s:background = "#171738"
+let s:background = "#191d32"
 let s:foreground = "#96acb7"
-let s:string = "#cf9893"
+let s:string = "#6d3b47"
+let s:string = "#748f70"
 let s:comment = "#2f4b54"
 
 let s:definition = "#8681c6"
