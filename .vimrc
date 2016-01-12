@@ -31,6 +31,9 @@ map <C-h> <C-W>h
 map <C-k> <C-W>k
 map <C-l> <C-W>l
 
+" autocmd
+autocmd BufWritePre * :%s/\s\+$//e
+
 "Faster shortcut for commenting. Requires T-Comment plugin
 map <leader>c <c-_><c-_>
 
