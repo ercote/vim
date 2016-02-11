@@ -37,18 +37,19 @@ autocmd BufWritePre * :%s/\s\+$//e
 "Faster shortcut for commenting. Requires T-Comment plugin
 map <leader>c <c-_><c-_>
 
-nmap <C-Tab> :bnext<CR>
-nmap <S-C-Tab> :bprevious<CR>
 nmap <BS> :bprevious<CR>
 nnoremap <Tab> :bnext<CR>
 
+command FormatJson :%!python -m json.tool
+nmap <C-A> :%!curl -s http://54.165.105.208:9091/v1/agents
+nmap <C-B> :FormatJson<CR>
 
 " CtrlP settings
 
 " clear cache :CtrlPClearAllCaches
 " CtrlP ignore these files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gz,*.exe,*.jpg,*.png,*.gif,*.ttf,*.otf
-set wildignore+=*.js.html,*/node_modules/*,*/public/assets/*,*/js_coverage/*
+set wildignore+=*.js.html,*/node_modules/*,*/public/assets/*,*/js_coverage/*,*/allure-results/*
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
