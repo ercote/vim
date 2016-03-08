@@ -43,6 +43,7 @@ nnoremap <Tab> :bnext<CR>
 command FormatJson :%!python -m json.tool
 nmap <C-A> :%!curl -s http://54.165.105.208:9091/v1/agents
 nmap <C-B> :FormatJson<CR>
+nmap <C-M> :CtrlPClearAllCaches<CR>
 
 " CtrlP settings
 
