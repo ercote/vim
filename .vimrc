@@ -8,10 +8,12 @@ set nowrap
 set tabstop=2 " Number of visual spaces for tab
 set softtabstop=2 " number of spaces in tab when editing
 set shiftwidth=2
+autocmd FileType js setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType rb setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
 set expandtab " Tabs are spaces
 set noswapfile " no swap files
 set showcmd
-"set cursorline
 set wildmenu
 set showmatch " show matching brackets
 set number " Show line numbers
@@ -41,9 +43,12 @@ nmap <BS> :bprevious<CR>
 nnoremap <Tab> :bnext<CR>
 
 command FormatJson :%!python -m json.tool
-nmap <C-A> :%!curl -s http://54.165.105.208:9091/v1/agents
+nmap <C-K> :%!curl -s http://54.165.105.208:9091/v1/agents
 nmap <C-B> :FormatJson<CR>
 nmap <C-M> :CtrlPClearAllCaches<CR>
+
+map <C-A> <Home>
+map <C-E> <End>
 
 " CtrlP settings
 
@@ -51,6 +56,7 @@ nmap <C-M> :CtrlPClearAllCaches<CR>
 " CtrlP ignore these files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gz,*.exe,*.jpg,*.png,*.gif,*.ttf,*.otf
 set wildignore+=*.js.html,*/node_modules/*,*/public/assets/*,*/js_coverage/*,*/allure-results/*
+
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
