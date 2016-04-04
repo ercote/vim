@@ -70,7 +70,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:vimroom_width=120
 let g:vimroom_min_sidebar_width=5
 
-" Open buffers with CMD+[0-9] keybindings
+" Open buffers with CMD+[1-9] keybindings
 function! OpenOrderedBuffer(order)
   let n_buf = bufnr("$")
   if a:order > n_buf
