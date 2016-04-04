@@ -42,8 +42,7 @@ map <leader>c <c-_><c-_>
 nmap <BS> :bprevious<CR>
 nnoremap <Tab> :bnext<CR>
 
-command FormatJson :%!python -m json.tool
-nmap <C-K> :%!curl -s http://54.165.105.208:9091/v1/agents
+command! FormatJson :%!python -m json.tool
 nmap <C-B> :FormatJson<CR>
 nmap <C-M> :CtrlPClearAllCaches<CR>
 
@@ -57,7 +56,7 @@ map <C-E> <End>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gz,*.exe,*.jpg,*.png,*.gif,*.ttf,*.otf
 set wildignore+=*.js.html,*/node_modules/*,*/public/assets/*,*/js_coverage/*,*/allure-results/*
 
-let g:ctrlp_match_window = 'bottom,order:ttb'
+
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_show_hidden = 1 "show hidden files
@@ -70,4 +69,27 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:vimroom_width=120
 let g:vimroom_min_sidebar_width=5
+
+" Open buffers with CMD+[0-9] keybindings
+function! OpenOrderedBuffer(order)
+  let n_buf = bufnr("$")
+  if a:order > n_buf
+    return
+  endif
+  let currbufnr = 1
+  let nummatches = 1
+  while currbufnr <= n_buf
+    if(buflisted(currbufnr))
+      if nummatches == a:order
+        execute ":buffer ". currbufnr
+        return
+      endif
+      let nummatches += 1
+    endif
+    let currbufnr += 1
+  endwhile
+endfunction
+for i in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  :execute "nmap <D-" . i . "> :call OpenOrderedBuffer(" . i . ")<CR>"
+endfor
 
