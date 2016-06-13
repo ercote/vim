@@ -1,7 +1,7 @@
 colorscheme tomorrow
 set background=light
 
-set guifont=Fira\ Mono:h11
+set guifont=Fira\ Mono:h12
 set linespace=8
 
 set guioptions-=m  "remove menu bar

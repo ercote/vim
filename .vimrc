@@ -61,7 +61,7 @@ set wildignore+=*.js.html,*/node_modules/*,*/public/assets/*,*/js_coverage/*,*/a
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g "" --ignore node_modules --ignore .git --ignore "*.js.html" --ignore assets --ignore js_coverage --ignore allure-results -- ignore logs'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g "" --ignore node_modules --ignore .git --ignore "*.js.html" --ignore public/assets --ignore js_coverage --ignore allure-results -- ignore logs'
 
 " ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
