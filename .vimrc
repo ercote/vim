@@ -8,9 +8,13 @@ set nowrap
 set tabstop=2 " Number of visual spaces for tab
 set softtabstop=2 " number of spaces in tab when editing
 set shiftwidth=2
-autocmd FileType js setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType rb setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+autocmd FileType js setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+autocmd FileType rb setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
 set expandtab " Tabs are spaces
 set noswapfile " no swap files
 set showcmd
