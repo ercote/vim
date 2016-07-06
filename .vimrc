@@ -8,9 +8,13 @@ set nowrap
 set tabstop=2 " Number of visual spaces for tab
 set softtabstop=2 " number of spaces in tab when editing
 set shiftwidth=2
-autocmd FileType js setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType rb setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+autocmd FileType js setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+autocmd FileType rb setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
 set expandtab " Tabs are spaces
 set noswapfile " no swap files
 set showcmd
@@ -18,7 +22,7 @@ set wildmenu
 set showmatch " show matching brackets
 set number " Show line numbers
 set laststatus=2 "display the status line always
-set incsearch
+set incsearch " search as characters are entered
 
 if !has('gui_running')
   let g:solarized_termtrans=1
@@ -48,6 +52,8 @@ nmap <C-M> :CtrlPClearAllCaches<CR>
 
 map <C-A> <Home>
 map <C-E> <End>
+nnoremap B ^
+nnoremap E $
 
 " CtrlP settings
 
@@ -56,10 +62,16 @@ map <C-E> <End>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gz,*.exe,*.jpg,*.png,*.gif,*.ttf,*.otf
 set wildignore+=*.js.html,*/node_modules/*,*/public/assets/*,*/js_coverage/*,*/allure-results/*
 
-
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_show_hidden = 1 "show hidden files
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g "" --ignore node_modules --ignore .git --ignore "*.js.html" --ignore public/assets --ignore js_coverage --ignore allure-results -- ignore logs'
+
+" ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" open ag.vim
+nnoremap <C-a> :Ag
 
 " Vim airline
 let g:airline#extensions#tabline#enabled = 1
