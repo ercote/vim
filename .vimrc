@@ -1,9 +1,9 @@
-
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-nohlsearch
+set encoding=utf-8
+
 set nowrap
 set tabstop=2 " Number of visual spaces for tab
 set softtabstop=2 " number of spaces in tab when editing
@@ -20,14 +20,19 @@ set noswapfile " no swap files
 set showcmd
 set wildmenu
 set showmatch " show matching brackets
-set number " Show line numbers
-set laststatus=2 "display the status line always
+set number " DO NOT show line numbers
+set laststatus=2
 set incsearch " search as characters are entered
 
-if !has('gui_running')
-  let g:solarized_termtrans=1
-  let g:solarized_termcolors=256
-  colorscheme solarized
+nnoremap <space> :nohlsearch<CR>
+
+" allows cursor change in tmux mode
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 
@@ -39,15 +44,45 @@ map <C-l> <C-W>l
 
 " autocmd
 autocmd BufWritePre * :%s/\s\+$//e
-
-"Faster shortcut for commenting. Requires T-Comment plugin
-map <leader>c <c-_><c-_>
+augroup configgroup
+    autocmd!
+    autocmd FileType java setlocal noexpandtab
+    autocmd FileType java setlocal list
+    autocmd FileType java setlocal listchars=tab:+\ ,eol:-
+    autocmd FileType java setlocal formatprg=par\ -w80\ -T4
+    autocmd FileType php setlocal expandtab
+    autocmd FileType php setlocal list
+    autocmd FileType php setlocal listchars=tab:+\ ,eol:-
+    autocmd FileType php setlocal formatprg=par\ -w80\ -T4
+    autocmd FileType ruby setlocal tabstop=2
+    autocmd FileType ruby setlocal shiftwidth=2
+    autocmd FileType ruby setlocal softtabstop=2
+    autocmd FileType ruby setlocal commentstring=#\ %s
+    autocmd FileType python setlocal commentstring=#\ %s
+    autocmd BufEnter *.cls setlocal filetype=java
+    autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+    autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
+    autocmd BufEnter *.js setlocal tabstop=4
+    autocmd BufEnter *.js setlocal shiftwidth=4
+    autocmd BufEnter *.js setlocal softtabstop=4
+augroup END
 
 nmap <BS> :bprevious<CR>
 nnoremap <Tab> :bnext<CR>
 
+function! ToggleBackground()
+    if (&background == "light")
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
+command! ToggleBG :call ToggleBackground()
+
 command! FormatJson :%!python -m json.tool
-nmap <C-B> :FormatJson<CR>
 nmap <C-M> :CtrlPClearAllCaches<CR>
 
 map <C-A> <Home>
@@ -62,6 +97,8 @@ nnoremap E $
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.gz,*.exe,*.jpg,*.png,*.gif,*.ttf,*.otf
 set wildignore+=*.js.html,*/node_modules/*,*/public/assets/*,*/js_coverage/*,*/allure-results/*
 
+let g:one_allow_italics = 1
+
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -71,13 +108,14 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g "" --ignore node_modu
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " open ag.vim
-nnoremap <C-a> :Ag
+nnoremap <C-a> :Ag '
 
 " Vim airline
-let g:airline#extensions#tabline#enabled = 1
-
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='one'
 " Just show the filename (no path) in the tab
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:Powerline_symbols = 'fancy'
 
 let g:vimroom_width=120
 let g:vimroom_min_sidebar_width=5
