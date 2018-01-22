@@ -1,5 +1,10 @@
-colorscheme tomorrow
-set background=light
+let hour = strftime("%H")
+if hour >= 6 && hour < 15
+  set background=light
+else
+  set background=dark
+endif
+colorscheme one
 
 set guifont=Fira\ Mono:h12
 set linespace=8
