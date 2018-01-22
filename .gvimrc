@@ -1,13 +1,8 @@
-let hour = strftime("%H")
-if hour >= 6 && hour < 15
-  set background=light
-else
-  set background=dark
-endif
-colorscheme one
 
-set guifont=Fira\ Mono:h12
-set linespace=8
+colorscheme solarized
+set background=dark
+
+set guifont=Fira\ Mono:h11
 " subpixel antialias: defaults write org.vim.MacVim AppleFontSmoothing int 0
 
 set guioptions-=m  "remove menu bar
