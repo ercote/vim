@@ -17,6 +17,8 @@ Plugin 'elzr/vim-json'
 Plugin 'itchyny/lightline.vim'
 Plugin 'moll/vim-node'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'chriskempson/base16-vim'
 call vundle#end()
 syntax on
 filetype plugin indent on
